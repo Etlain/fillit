@@ -1,13 +1,5 @@
 #include "Header.h"
 
-//////////////////////////////////////////////////////////////////
-//			 FONCTION DE VERIFICATION DES DONNEE				//
-//////////////////////////////////////////////////////////////////
-// 1. Nombre de # par 4 lignes cohérent :CHECKED                //
-// 2. Lien entre les tetriminos cohérents :X                    //
-//	Not Working													//
-//////////////////////////////////////////////////////////////////
-
 int		check_nbtrue_help(char **tab, int line, int *pack, int *index)
 {
 	int		x;
