@@ -6,7 +6,7 @@
 /*   By: mmouhssi <mmouhssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 11:53:51 by mmouhssi          #+#    #+#             */
-/*   Updated: 2016/01/06 17:02:29 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/07 23:23:25 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,13 @@ void	del_tetra(char **tab, char **tetra)
 
 int		ft_pos_tetra(char **map, char **tetra, int *i, int *j)
 {
-	int		k;
-	int		l;
 	char	c;
 
-	k = 0;
 	*i = 0;
 	c = ft_letter_tetra(tetra);
 	while (map[*i] != '\0')
 	{
 		*j = 0;
-		l = 0;
 		while (map[*i][*j] != '\0')
 		{
 			if (map[*i][*j] == c)
