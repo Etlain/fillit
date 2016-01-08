@@ -1,11 +1,9 @@
 #ifndef HEADER_H
-#define HEADER_H
+# define HEADER_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <fcntl.h>
-#include "libft/libft.h"
+# include <fcntl.h>
+# include "libft/libft.h"
+# include <stdio.h>
 
 typedef struct		s_tab
 {
@@ -36,9 +34,12 @@ void				add_tetra(char **map, char **dim, int l, int k);
 char				***cut_tetra(char ***dim);
 void				show_dim(char ***dim);
 void				show_tab(char **tab);
-void				del_tetra(char **tab, char **tetra);
-int					verif_tetra(char **tab, char **tetra);
+void				del_tetra(char **tab, char **tetra, int i, int j);
+int					verif_tetra(char **tab, char **tetra, int i, int j);
 char				**cut_it_all(char **tab);
 int					ft_pos_tetra(char **map, char **tetra, int *i, int *j);
+char				**create_map(int nb);
+int					help_fun(char *str, int index, int nb);
+int					check_fuck(char **tab, char **tetra, int k, int l);
 
 #endif // !HEADER_H

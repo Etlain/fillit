@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   three_dim.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/08 13:47:20 by abara             #+#    #+#             */
+/*   Updated: 2016/01/08 13:48:58 by abara            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Header.h"
 
 void	bloc_size(char **tab, int *blocsize)
@@ -13,9 +25,9 @@ void	bloc_size(char **tab, int *blocsize)
 		{
 			if (x + 1 == 5 * *blocsize)
 				*blocsize = *blocsize + 1;
-			y++;
+			++y;
 		}
-		x++;
+		++x;
 	}
 }
 
@@ -44,7 +56,7 @@ char	***tab_in(char ***dim, char **tab)
 	return (dim);
 }
 
-char	***three_dim(char	**tab)
+char	***three_dim(char **tab)
 {
 	int		blocsize;
 	char	***dim;

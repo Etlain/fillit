@@ -19,8 +19,8 @@ SRC = check_isnbtrue.c check_link.c check_tab.c cut_tetra.c linked_list.c \
 FLAGS = -Wall -Wextra -Werror
 
 all: 
-	gcc -o $(NAME) $(FLAGS) $(SRC)
-	./$(NAME)
+	gcc -o $(NAME) $(SRC)
+	time ./$(NAME)
 
 fclean:
 	rm -r $(NAME)

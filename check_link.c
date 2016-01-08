@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_link.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/08 13:59:21 by abara             #+#    #+#             */
+/*   Updated: 2016/01/08 14:53:03 by abara            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Header.h"
 
-int		check_nb_link(char *str)
+static int		check_nb_link(char *str)
 {
 	int		index;
 	int		nb;
@@ -10,15 +22,15 @@ int		check_nb_link(char *str)
 	while (str[index] != '\0')
 	{
 		if (str[index] == '#')
-			nb++;
-		index++;
+			++nb;
+		++index;
 	}
 	if (nb == 0)
 		return (0);
 	return (1);
 }
 
-int		check_link_line(char *str)
+static int		check_link_line(char *str)
 {
 	static char	*check;
 	int			index;
@@ -38,44 +50,40 @@ int		check_link_line(char *str)
 		if (check[index] == '#')
 		{
 			if (str[index] == '#')
-				nb++;
+				++nb;
 		}
-		index++;
+		++index;
 	}
 	check = str;
-	return (nb == 0 ? 1 : 0);
+	return (nb = 0 ? 1 : 0);
 }
 
-int		check_link_spe(char *str)
+static int		check_link_spe(char *str)
 {
 	int		index;
 	int		nb;
 
 	index = 0;
 	nb = 0;
-	while (str[index] != '\0')
-	{
-		if (str[index] == '#')
-			nb++;
-		index++;
-	}
+	nb = help_fun(str, index, nb);
 	index = 0;
 	if (nb == 2)
 	{
 		while (str[index] != '#')
-			index++;
+			++index;
 		return (str[index + 1] != '#');
 	}
 	if (nb == 3)
 	{
 		while (str[index] != '#')
-			index++;
-		return (str[index + 1] != '#' || str[index + 2] != '#');
+			++index;
+		if (str[index + 1] != '#' || str[index + 2] != '#')
+			return (1);
 	}
 	return (0);
 }
 
-int		check_link_help(t_tab *list)
+static int		check_link_help(t_tab *list)
 {
 	int		line;
 
@@ -85,7 +93,7 @@ int		check_link_help(t_tab *list)
 		if (check_link_line(list->tab[line]) != 0
 				|| check_link_spe(list->tab[line]) != 0)
 			return (1);
-		line++;
+		++line;
 	}
 	return (0);
 }
@@ -98,9 +106,7 @@ int		check_link(char ***dim)
 	while (list)
 	{
 		if (check_link_help(list) != 0)
-		{
 			return (1);
-		}
 		list = list->next;
 	}
 	return (0);

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_isnbtrue.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/08 13:46:36 by abara             #+#    #+#             */
+/*   Updated: 2016/01/08 14:45:01 by abara            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Header.h"
 
-int		check_nbtrue_help(char **tab, int line, int *pack, int *index)
+static int		check_nbtrue_help(char **tab, int line, int *pack, int *index)
 {
 	int		x;
 
@@ -8,20 +20,20 @@ int		check_nbtrue_help(char **tab, int line, int *pack, int *index)
 	while (tab[line][x] != '\0')
 	{
 		if (tab[line][x] == '#')
-			*index = *index + 1;
-		x++;
+			++(*index);
+		++x;
 	}
 	if (line + 1 == 5 * *pack)
 	{
 		if (*index != 4)
 			return (1);
-		*pack = *pack + 1;
+		++(*pack);
 		*index = 0;
 	}
 	return (0);
 }
 
-int		check_nbtrue(char **tab)
+static int		check_nbtrue(char **tab)
 {
 	int		line;
 	int		index;
@@ -34,12 +46,12 @@ int		check_nbtrue(char **tab)
 	{
 		if (check_nbtrue_help(tab, line, &pack, &index) != 0)
 			return (1);
-		line++;
+		++line;
 	}
 	return (0);
 }
 
-int		check_isnbrtrue(char **tab)
+int				check_isnbrtrue(char **tab)
 {
 	printf("check_nbtrue : %d\n", check_nbtrue(tab));
 	return (0);

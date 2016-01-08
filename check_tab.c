@@ -1,37 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_tab.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/08 13:18:40 by abara             #+#    #+#             */
+/*   Updated: 2016/01/08 14:55:47 by abara            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Header.h"
 
-//////////////////////////////////////////////////////////////////
-//			 FONCTION DE VERIFICATION DES DONNEE				//
-//////////////////////////////////////////////////////////////////
-// 1. Nombre d'input cohérent :CHECKED                          //
-// 2. Taille des lines cohérentes :CHECKED                      //
-// 3. Charactères cohérents :CHECKED							//
-// 4. Tetriminos cohérents :CHECKED								//
-//	Now Working													//
-//////////////////////////////////////////////////////////////////
-
-int		check_line_size(char *str, int line, int maxline)
+static int		check_line_size(char *str, int line, int maxline)
 {
 	int		size;
 
 	size = 0;
 	while (str[size] != '\0')
-	{
-		size++;
-	}
+		++size;
 	if (!maxline || !line)
 		return (0);
-/*	if (line == maxline)
-		size++;*/
 	if (size != 5)
 	{
-		printf("size : %d", size);		//REMOVE
+		printf("size : %d", size);
 		return (1);
 	}
 	return (0);
 }
 
-int		check_line(char **tab, int maxline, int	*pack)
+static int		check_line(char **tab, int maxline, int *pack)
 {
 	int		line;
 
@@ -43,20 +41,20 @@ int		check_line(char **tab, int maxline, int	*pack)
 		{
 			if (tab[line][0] != '\n')
 				return (1);
-			line++;
-			*pack = *pack + 1;
+			++line;
+			++(*pack);
 		}
 		if (check_line_size(tab[line], line, maxline) != 0)
 		{
-			printf(" Line : %d\n", line);	//REMOVE
+			printf(" Line : %d\n", line);
 			return (1);
 		}
-		line++;
+		++line;
 	}
 	return (0);
 }
 
-int		check_char(char **tab, int	*maxline, int *nbsign)
+static int		check_char(char **tab, int *maxline, int *nbsign)
 {
 	int		line;
 	int		c;
@@ -67,30 +65,30 @@ int		check_char(char **tab, int	*maxline, int *nbsign)
 		c = 0;
 		while (tab[line][c] != '\0')
 		{
-			if (tab[line][c] != '.' && tab[line][c] != '#' && tab[line][c] != '\n')
+			if (tab[line][c] != '.' && tab[line][c] != '#'
+					&& tab[line][c] != '\n')
 			{
-				printf("Pos : %d:%d\n", line, c);  //REMOVE
-				printf("%c", tab[line][c]);		//REMOVE
+				printf("Pos : %d:%d\n", line, c);
+				printf("%c", tab[line][c]);
 				return (1);
 			}
 			if (tab[line][c] == '#')
-				*nbsign = *nbsign + 1;
-			c++;
+				++(*nbsign);
+			++c;
 		}
-
-		line++;
+		++line;
 	}
 	*maxline = line - 1;
 	return (0);
 }
 
-int		check_nbline(char **tab, int pack, int maxline, int nbsign)
+static int		check_nbline(char **tab, int pack, int maxline, int nbsign)
 {
 	if (!tab)
 		return (-1);
 	if (((maxline - pack) % 4) != 0 || ((pack + 1) * 4) != nbsign)
 	{
-		printf("%d - %d : 4 = %d\n", maxline, pack,((maxline - pack) % 4));//
+		printf("%d - %d : 4 = %d\n", maxline, pack, ((maxline - pack) % 4));
 		return (1);
 	}
 	return (0);

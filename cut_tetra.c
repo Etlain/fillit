@@ -1,9 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cut_tetra.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/08 13:22:14 by abara             #+#    #+#             */
+/*   Updated: 2016/01/08 14:59:16 by abara            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Header.h"
 
-//Ceci est un prototype et peut ne pas être nécessaire
-//WORKING NOW
-
-int		isempty_line_h(char *str)
+static int		isempty_line_h(char *str)
 {
 	int		x;
 	int		index;
@@ -13,25 +22,25 @@ int		isempty_line_h(char *str)
 	while (str[x] != '\0')
 	{
 		if (str[x] == '#')
-			index++;
-		x++;
+			++index;
+		++x;
 	}
 	if (index != 0)
 		return (0);
 	return (1);
 }
 
-char	**cut_line_h(char **tab, int index)
+static char		**cut_line_h(char **tab, int index)
 {
 	while (tab[index] != NULL)
 	{
 		tab[index] = tab[index + 1];
-		index++;
+		++index;
 	}
 	return (tab);
 }
 
-char	**cut_line_v(char **tab, int index)
+static char		**cut_line_v(char **tab, int index)
 {
 	int		x;
 	int		rindex;
@@ -44,15 +53,15 @@ char	**cut_line_v(char **tab, int index)
 		while (tab[x][index] != '\n')
 		{
 			tab[x][index] = tab[x][index + 1];
-			index++;
+			++index;
 		}
 		tab[x][index] = '\0';
-		x++;
+		++x;
 	}
 	return (tab);
 }
 
-int		isempty_line_v(char **tab, int y)
+static int		isempty_line_v(char **tab, int y)
 {
 	int		index;
 	int		x;
@@ -62,8 +71,8 @@ int		isempty_line_v(char **tab, int y)
 	while (tab[x] != NULL)
 	{
 		if (tab[x][y] == '#')
-			index++;
-		x++;
+			++index;
+		++x;
 	}
 	if (index != 0)
 		return (0);
@@ -74,20 +83,17 @@ char	**cut_it_all(char **tab)
 {
 	int		x;
 	int		y;
-	int		count;
 
 	x = 0;
 	y = 0;
-	count = 0;
 	while (tab[x] != NULL)
 	{
 		if (isempty_line_h(tab[x]) != 0)
 		{
 			tab = cut_line_h(tab, x);
-			x = 0;
+			--x;
 		}
-		else
-			x++;
+		++x;
 	}
 	x = 0;
 	while (tab[x][y] != '\0')
@@ -95,24 +101,9 @@ char	**cut_it_all(char **tab)
 		if (isempty_line_v(tab, y) != 0)
 		{
 			tab = cut_line_v(tab, y);
-			y = 0;
+			--y;
 		}
-		else
-			y++;
+		++y;
 	}
-	//show_tab(tab);
 	return (tab);
-}
-
-char	***cut_tetra(char ***dim)
-{
-	int		index;
-
-	index = 0;
-	while (dim[index] != NULL)
-	{
-		dim[index] = cut_it_all(dim[index]);
-		index++;
-	}
-	return (dim);
 }

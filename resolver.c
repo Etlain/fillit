@@ -3,56 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   resolver.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmouhssi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 18:07:01 by mmouhssi          #+#    #+#             */
-/*   Updated: 2016/01/06 18:07:17 by mmouhssi         ###   ########.fr       */
+/*   Created: 2016/01/08 14:16:53 by abara             #+#    #+#             */
+/*   Updated: 2016/01/08 17:09:52 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Header.h"
 
-char	**create_map(int nb)
-{
-	char	**map;
-	int		x;
-	int		y;
-	int		power;
-
-	x = 0;
-	power = get_power(nb);
-	map = (char **)malloc(sizeof(*map) * power + 1);
-	while (x != power)
-	{
-		map[x] = (char *)malloc(sizeof(*map) * power + 1);
-		y = 0;
-		while (y != power)
-		{
-			map[x][y] = '.';
-			y++;
-		}
-		map[x][y] = '\0';
-		x++;
-	}
-	map[power] = NULL;
-	return (map);
-}
-
 t_pos	boucle(char ***dim, char **map, t_pos pos, int nb)
 {
 	while (map[pos.i][pos.j] != '\0' && pos.index < nb)
 	{
-		add_tetra(map, dim[pos.index], pos.i, pos.j);
-		if (verif_tetra(map, dim[pos.index]) == 0)
+		if (check_fuck(map, dim[pos.index], pos.i, pos.j) == 0)
 		{
-			del_tetra(map, dim[pos.index]);
+			add_tetra(map, dim[pos.index], pos.i, pos.j);
+			if (verif_tetra(map, dim[pos.index], pos.i, pos.j) == 0)
+			{
+				del_tetra(map, dim[pos.index], pos.i, pos.j);
+			}
+			else if (verif_tetra(map, dim[pos.index], pos.i, pos.j) == 1)
+			{
+				pos.j = -1;
+				pos.i = 0;
+				pos.index++;
+			}
 		}
-		else if (verif_tetra(map, dim[pos.index]) == 1)
+		/*add_tetra(map, dim[pos.index], pos.i, pos.j);
+		if (verif_tetra(map, dim[pos.index], pos.i, pos.j) == 0)
+		{
+			del_tetra(map, dim[pos.index], pos.i, pos.j);
+		}
+		else if (verif_tetra(map, dim[pos.index], pos.i, pos.j) == 1)
 		{
 			pos.j = -1;
 			pos.i = 0;
 			pos.index++;
-		}
+		}*/
 		pos.j++;
 	}
 	return (pos);
@@ -64,6 +52,7 @@ t_pos	condition(char ***dim, char **map, t_pos pos, int nb)
 	{
 		pos.index--;
 		ft_pos_tetra(map, dim[pos.index], &pos.i, &pos.j);
+		del_tetra(map, dim[pos.index], pos.i, pos.j);
 		if (map[pos.i][pos.j + 1] == '\0')
 		{
 			pos.i++;
@@ -71,7 +60,6 @@ t_pos	condition(char ***dim, char **map, t_pos pos, int nb)
 		}
 		else
 			pos.j++;
-		del_tetra(map, dim[pos.index]);
 	}
 	else
 	{

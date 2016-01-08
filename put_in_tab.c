@@ -1,15 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_in_tab.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/08 13:16:25 by abara             #+#    #+#             */
+/*   Updated: 2016/01/08 13:16:34 by abara            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Header.h"
-
-//////////////////////////////////////////////////////////////////////////////
-//					  FONCTION DE RECUPERATION DE DONNEE					//
-//////////////////////////////////////////////////////////////////////////////
-// 1. Fonction récupère le nombre de ligne :CHECKED							//
-// 2. Fonction qui place chaque ligne dans le tableau 2D :CHECKED			//
-// 3. Fonction qui place chaque ligne dans une chaine de caractère :CHECKED	//
-//	Now working																//
-//////////////////////////////////////////////////////////////////////////////
-
-#include <unistd.h>
 
 int		get_line(char *fname)
 {
@@ -83,7 +84,6 @@ char	*get_str(char *fname, int index)
 	}
 	str = (char *)malloc(sizeof(str) * size + 1);
 	get_in_str(fname, index, str);
-	//printf("%s", str);
 	return (str);
 }
 
@@ -101,7 +101,6 @@ char	**get_in_tab(char *fname)
 		tab[index] = get_str(fname, index);
 		index++;
 	}
-	//printf("line : %d\n", line);						LINE
 	tab[line - 1] = NULL;
 	return (tab);
 }
