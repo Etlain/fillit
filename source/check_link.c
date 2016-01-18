@@ -6,7 +6,7 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:59:21 by abara             #+#    #+#             */
-/*   Updated: 2016/01/13 18:50:16 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/18 10:47:25 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,11 +137,13 @@ static int		check_link_help(t_tab *list)
 	line = 0;
 	while (line < 4)
 	{
-		if (check_link_line(list->tab[line]) != 0
+		/*if (check_link_line(list->tab[line]) != 0
 				|| check_link_spe(list->tab[line]) != 0)
-			return (1);
+			return (1);*/
+		printf("check link line: %d\n check link spe: %d\n", check_link_line(list->tab[line]), check_link_spe(list->tab[line]));
 		++line;
 	}
+	ft_putchar('\n');
 	return (0);
 }
 
