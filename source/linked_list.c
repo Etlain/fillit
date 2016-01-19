@@ -6,22 +6,11 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:09:42 by abara             #+#    #+#             */
-/*   Updated: 2016/01/13 18:52:38 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/19 17:10:11 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fillit.h"
-
-int		help_fun(char *str, int index, int nb)
-{
-	while (str[index] != '\0')
-	{
-		if (str[index] == '#')
-			nb++;
-		index++;
-	}
-	return (nb);
-}
 
 t_tab	*add_link(t_tab *list, char **tab)
 {

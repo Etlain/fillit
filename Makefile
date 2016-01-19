@@ -6,7 +6,7 @@
 #    By: mmouhssi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 09:06:02 by mmouhssi          #+#    #+#              #
-#*   Updated: 2016/01/16 19:20:07 by mmouhssi         ###   ########.fr       *#
+#*   Updated: 2016/01/19 17:31:31 by mmouhssi         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = libft/libft.a
 
 SRC = check_isnbtrue.c check_link.c check_tab.c cut_tetra.c linked_list.c \
       main.c power.c put_in_tab.c resolver.c tetra.c three_dim.c turn_letter.c \
-      get_next_line.c
+      get_next_line.c check_nb_link.c
 
 PATH_SRC = source/
 

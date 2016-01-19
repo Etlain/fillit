@@ -6,7 +6,7 @@
 /*   By: mmouhssi <mmouhssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 11:53:51 by mmouhssi          #+#    #+#             */
-/*   Updated: 2016/01/13 18:54:37 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/19 17:23:58 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,17 +133,13 @@ void			add_tetra(char **tab, char **tetra, int k, int l)
 
 int				verif_tetra(char **tab, char **tetra, int i, int j)
 {
-	//int		i;
-	//int		j;
 	int		nbr;
 	char	c;
 
-	//i = 0;
 	nbr = 0;
 	c = ft_letter_tetra(tetra);
 	while (tab[i] != '\0')
 	{
-		//j = 0;
 		while (tab[i][j] != '\0')
 		{
 			if (tab[i][j] == c)

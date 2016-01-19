@@ -6,12 +6,11 @@
 /*   By: mmouhssi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 11:04:32 by mmouhssi          #+#    #+#             */
-/*   Updated: 2016/01/16 20:33:47 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/19 17:17:23 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/get_next_line.h"
-#include "../libft/libft.h"
+#include "../include/fillit.h"
 
 static void		ft_list(t_list **lst, t_list **list, int fd)
 {

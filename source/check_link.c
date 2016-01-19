@@ -6,53 +6,62 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:59:21 by abara             #+#    #+#             */
-/*   Updated: 2016/01/18 10:47:25 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/19 17:14:00 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fillit.h"
 
-static int		check_nb_link(char *str)
+static int		empty_line(char **check, char *str, int i, int t)
 {
-	int		index;
-	int		nb;
+	static int nbr_d;
 
-	index = 0;
-	nb = 0;
-	while (str[index] != '\0')
+	if (!nbr_d || i == 0)
+		nbr_d = 0;
+	if (((check_nb_link(*check) == 0 && check_nb_link(str) > 0) ||
+			 (check_nb_link(*check) > 0 && check_nb_link(str) == 0))
+			  && t == 1)
 	{
-		if (str[index] == '#')
-			++nb;
-		++index;
+		if (nbr_d < 4)
+		{
+			*check = str;
+			t = 0;
+			return (1);
+		}
 	}
-	if (nb == 0)
+	nbr_d = check_nb_link(str) + nbr_d;
+	if (check_nb_link(str) == 0 || check_nb_link(*check) == 0)
+	{
+		*check = str;
 		return (0);
-	return (1);
+	}
+	return (2);
 }
 
-static int		check_link_line(char *str)
+static int		check_link_line(char *str, int i)
 {
 	static char	*check;
-	int			index;
-	int			nb;
+	static int	t;
+	int		index;
+	int		nb;
+	int		e_l;
 
-	nb = 0;
-	if (!check)
+	if (!check || i == 0)
 		check = str;
+	if (!t || i == 0)
+		t = 0;
+	if ((e_l = empty_line(&check, str, i, t)) != 2)
+		return (e_l);
 	index = 0;
-	if (check_nb_link(str) == 0 || check_nb_link(check) == 0)
-	{
-		check = str;
-		return (0);
-	}
+	nb = 0;
 	while (check[index] != '\0')
 	{
-		if (check[index] == '#')
+		if (check[index] == '#' && str[index] == '#')
 		{
-			if (str[index] == '#')
-				++nb;
+			t = 1;
+			nb++;
 		}
-		++index;
+		index++;
 	}
 	check = str;
 	return (nb == 0 ? 1 : 0);
@@ -63,9 +72,7 @@ static int		check_link_spe(char *str)
 	int		index;
 	int		nb;
 
-	index = 0;
-	nb = 0;
-	nb = help_fun(str, index, nb);
+	nb = check_nb_link(str);
 	index = 0;
 	if (nb == 2)
 	{
@@ -82,54 +89,7 @@ static int		check_link_spe(char *str)
 	}
 	return (0);
 }
-/*
-static int		nb_line_link(char **tab, int j)
-{
-	int nb;
-	int i;
 
-	nb = 0;
-	i = 0;
-	while (tab[i] != NULL)
-	{
-		if (tab[i][j] == '#')
-			nb++;
-		i++;
-	}
-	return (nb);
-}
-
-static int		check_ord_link(t_tab *list)
-{
-	int	nb;
-	int i;
-	int j;
-
-	j = 0;
-	i = 0;
-	while (list->tab[i][j] != '\0')
-	{
-		i = 0;
-		nb = nb_line_link(list->tab, j);
-		if (nb == 2)
-		{
-			while (list->tab[i][j] != '#')
-				i++;
-			if (list->tab[i + 1][j] != '#')
-				return (1);
-		}
-		if (nb == 3)
-		{
-			while (list->tab[i][j] != '#')
-				i++;
-			if (list->tab[i + 1][j] != '#')
-				return (1);
-		}
-		j++;
-	}
-	return (0);
-}
-*/
 static int		check_link_help(t_tab *list)
 {
 	int		line;
@@ -137,13 +97,11 @@ static int		check_link_help(t_tab *list)
 	line = 0;
 	while (line < 4)
 	{
-		/*if (check_link_line(list->tab[line]) != 0
+		if (check_link_line(list->tab[line], line) != 0
 				|| check_link_spe(list->tab[line]) != 0)
-			return (1);*/
-		printf("check link line: %d\n check link spe: %d\n", check_link_line(list->tab[line]), check_link_spe(list->tab[line]));
-		++line;
+			return (1);
+		line++;
 	}
-	ft_putchar('\n');
 	return (0);
 }
 
@@ -154,7 +112,7 @@ int		check_link(char ***dim)
 	list = get_in_list(dim);
 	while (list)
 	{
-		if (check_link_help(list) != 0 )//|| check_ord_link(list) != 0)
+		if (check_link_help(list) != 0)
 			return (1);
 		list = list->next;
 	}
