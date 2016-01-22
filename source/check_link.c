@@ -6,7 +6,7 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:59:21 by abara             #+#    #+#             */
-/*   Updated: 2016/01/22 12:44:59 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 15:10:39 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int				check_link(char ***dim)
 	list = get_in_list(dim);
 	while (list)
 	{
-		if (check_link_help(list) != 0)
+		if (check_link_help(list) != 0 || check_ord_link(list) != 0)
 			return (1);
 		list = list->next;
 	}

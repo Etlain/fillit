@@ -6,13 +6,13 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:59:21 by abara             #+#    #+#             */
-/*   Updated: 2016/01/22 15:05:06 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 15:33:48 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fillit.h"
 
-int		nb_line_link(char **tab, int j)
+static int		nb_line_link(char **tab, int j)
 {
 	int nb;
 	int i;
@@ -28,7 +28,26 @@ int		nb_line_link(char **tab, int j)
 	return (nb);
 }
 
-int		check_ord_link(t_tab *list)
+static int		condition(t_tab *list, int nb, int *i, int j)
+{
+	if (nb == 2)
+	{
+		while (list->tab[*i][j] != '#')
+			(*i)++;
+		if (list->tab[*i + 1][j] != '#')
+			return (1);
+	}
+	if (nb == 3)
+	{
+		while (list->tab[*i][j] != '#')
+			(*i)++;
+		if (list->tab[*i + 1][j] != '#')
+			return (1);
+	}
+	return (0);
+}
+
+int				check_ord_link(t_tab *list)
 {
 	int	nb;
 	int i;
@@ -40,20 +59,8 @@ int		check_ord_link(t_tab *list)
 	{
 		i = 0;
 		nb = nb_line_link(list->tab, j);
-		if (nb == 2)
-		{
-			while (list->tab[i][j] != '#')
-				i++;
-			if (list->tab[i + 1][j] != '#')
-				return (1);
-		}
-		if (nb == 3)
-		{
-			while (list->tab[i][j] != '#')
-				i++;
-			if (list->tab[i + 1][j] != '#')
-				return (1);
-		}
+		if (condition(list, nb, &i, j) == 1)
+			return (1);
 		j++;
 	}
 	return (0);

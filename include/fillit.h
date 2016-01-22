@@ -6,7 +6,7 @@
 /*   By: mmouhssi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:01:24 by mmouhssi          #+#    #+#             */
-/*   Updated: 2016/01/22 15:13:37 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 15:29:12 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ char				**create_map(int nb);
 int					check_add_tetra(char **tab, char **tetra, int k, int l);
 char				ft_letter(char **tetra);
 int					check_ord_link(t_tab *list);
-int					nb_line_link(char **tab, int j);
 
 #endif
