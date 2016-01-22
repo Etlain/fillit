@@ -6,7 +6,7 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:18:40 by abara             #+#    #+#             */
-/*   Updated: 2016/01/22 12:45:39 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 13:24:38 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,6 @@ int				check_maps(char **tab)
 	if (check_line(tab, maxline, &pack) != 0)
 		return (1);
 	pack--;
-	if (pack > 26)
-		return (1);
 	if (check_nbline(tab, pack, maxline + 1, nbsign) != 0)
 		return (1);
 	return (0);
