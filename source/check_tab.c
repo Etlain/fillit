@@ -6,27 +6,25 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:18:40 by abara             #+#    #+#             */
-/*   Updated: 2016/01/22 13:24:38 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 14:29:49 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fillit.h"
 
-static int		check_line_size(char *str, int line, int maxline)
+static int		check_line_size(char *str)
 {
 	int		size;
 
 	size = 0;
 	while (str[size] != '\0')
 		++size;
-	if (!maxline || !line)
-		return (0);
-	if (size != 5)
+	if (size < 5)
 		return (1);
 	return (0);
 }
 
-static int		check_line(char **tab, int maxline, int *pack)
+static int		check_line(char **tab, int *pack)
 {
 	int		line;
 
@@ -38,12 +36,12 @@ static int		check_line(char **tab, int maxline, int *pack)
 		{
 			if (tab[line][0] != '\n')
 				return (1);
-			++line;
-			++(*pack);
+			line++;
+			(*pack)++;
 		}
-		if (check_line_size(tab[line], line, maxline) != 0)
+		if (check_line_size(tab[line]) != 0)
 			return (1);
-		++line;
+		line++;
 	}
 	return (0);
 }
@@ -96,7 +94,7 @@ int				check_maps(char **tab)
 	maxline = 0;
 	if (check_char(tab, &maxline, &nbsign) != 0)
 		return (1);
-	if (check_line(tab, maxline, &pack) != 0)
+	if (check_line(tab, &pack) != 0)
 		return (1);
 	pack--;
 	if (check_nbline(tab, pack, maxline + 1, nbsign) != 0)
