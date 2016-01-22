@@ -6,13 +6,13 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:38:05 by abara             #+#    #+#             */
-/*   Updated: 2016/01/19 16:13:46 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 12:52:46 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fillit.h"
 
-char	***cut_tetra(char ***dim)
+char			***cut_tetra(char ***dim)
 {
 	int		index;
 
@@ -25,7 +25,7 @@ char	***cut_tetra(char ***dim)
 	return (dim);
 }
 
-char	**create_map(int power)
+char			**create_map(int power)
 {
 	char	**map;
 	int		x;
@@ -49,7 +49,7 @@ char	**create_map(int power)
 	return (map);
 }
 
-static void	main_control(char ***dim, char **tab)
+static void		main_control(char ***dim, char **tab)
 {
 	int		nb;
 
@@ -61,7 +61,7 @@ static void	main_control(char ***dim, char **tab)
 	resolver(dim, nb);
 }
 
-int			main(int argc, char	**argv)
+int				main(int argc, char **argv)
 {
 	char	**tab;
 	char	***dim;

@@ -6,7 +6,7 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:22:14 by abara             #+#    #+#             */
-/*   Updated: 2016/01/13 18:51:26 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 12:46:12 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int		isempty_line_v(char **tab, int y)
 	return (1);
 }
 
-char	**cut_it_all(char **tab)
+char			**cut_it_all(char **tab)
 {
 	int		x;
 	int		y;

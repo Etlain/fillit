@@ -6,7 +6,7 @@
 /*   By: mmouhssi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 15:42:01 by mmouhssi          #+#    #+#             */
-/*   Updated: 2015/12/23 21:17:02 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 12:35:25 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_putstr_tab(char **tab);
 void				ft_putendl_tab(char **tab);
-int				ft_power(int nb, int power);
-int				ft_factorial(int nb);
-int				ft_sqrt(int nb);
+int					ft_power(int nb, int power);
+int					ft_factorial(int nb);
+int					ft_sqrt(int nb);
 void				ft_swap(int *a, int *b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:59:21 by abara             #+#    #+#             */
-/*   Updated: 2016/01/19 17:14:00 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 12:44:59 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static int		empty_line(char **check, char *str, int i, int t)
 	if (!nbr_d || i == 0)
 		nbr_d = 0;
 	if (((check_nb_link(*check) == 0 && check_nb_link(str) > 0) ||
-			 (check_nb_link(*check) > 0 && check_nb_link(str) == 0))
-			  && t == 1)
+			(check_nb_link(*check) > 0 && check_nb_link(str) == 0))
+			&& t == 1)
 	{
 		if (nbr_d < 4)
 		{
@@ -42,9 +42,9 @@ static int		check_link_line(char *str, int i)
 {
 	static char	*check;
 	static int	t;
-	int		index;
-	int		nb;
-	int		e_l;
+	int			index;
+	int			nb;
+	int			e_l;
 
 	if (!check || i == 0)
 		check = str;
@@ -105,7 +105,7 @@ static int		check_link_help(t_tab *list)
 	return (0);
 }
 
-int		check_link(char ***dim)
+int				check_link(char ***dim)
 {
 	t_tab	*list;
 

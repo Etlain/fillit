@@ -6,7 +6,7 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:18:40 by abara             #+#    #+#             */
-/*   Updated: 2016/01/16 20:38:03 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 12:45:39 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int		check_nbline(char **tab, int pack, int maxline, int nbsign)
 	return (0);
 }
 
-int		check_maps(char **tab)
+int				check_maps(char **tab)
 {
 	int		maxline;
 	int		pack;

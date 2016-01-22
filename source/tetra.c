@@ -6,37 +6,17 @@
 /*   By: mmouhssi <mmouhssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 11:53:51 by mmouhssi          #+#    #+#             */
-/*   Updated: 2016/01/19 17:23:58 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/22 13:12:06 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fillit.h"
 
-static char		ft_letter_tetra(char **tetra)
-{
-	int	i;
-	int j;
-
-	i = 0;
-	while (tetra[i] != '\0')
-	{
-		j = 0;
-		while (tetra[i][j] != '\0')
-		{
-			if (tetra[i][j] >= 'A' && tetra[i][j] <= 'Z')
-				return (tetra[i][j]);
-			++j;
-		}
-		++i;
-	}
-	return (0);
-}
-
-void			del_tetra(char **tab, char **tetra, int i, int j)
+void				del_tetra(char **tab, char **tetra, int i, int j)
 {
 	char	c;
 
-	c = ft_letter_tetra(tetra);
+	c = ft_letter(tetra);
 	while (tab[i] != NULL)
 	{
 		while (tab[i][j] != '\0')
@@ -50,12 +30,12 @@ void			del_tetra(char **tab, char **tetra, int i, int j)
 	}
 }
 
-int				ft_pos_tetra(char **map, char **tetra, int *i, int *j)
+int					ft_pos_tetra(char **map, char **tetra, int *i, int *j)
 {
 	char	c;
 
 	*i = 0;
-	c = ft_letter_tetra(tetra);
+	c = ft_letter(tetra);
 	while (map[*i] != '\0')
 	{
 		*j = 0;
@@ -75,7 +55,7 @@ int				ft_pos_tetra(char **map, char **tetra, int *i, int *j)
 	return (0);
 }
 
-int			check_add_tetra(char **tab, char **tetra, int k, int l)
+int					check_add_tetra(char **tab, char **tetra, int k, int l)
 {
 	int i;
 	int j;
@@ -90,7 +70,8 @@ int			check_add_tetra(char **tab, char **tetra, int k, int l)
 		{
 			if (tetra[i][j] != '\0')
 			{
-				if (tetra[i][j] >= 'A' && tetra[i][j] <= 'Z' && tab[k][l] >= 'A' && tab[k][l] <= 'Z')
+				if (tetra[i][j] >= 'A' && tetra[i][j] <= 'Z'
+						&& tab[k][l] >= 'A' && tab[k][l] <= 'Z')
 					return (1);
 				++j;
 			}
@@ -103,7 +84,7 @@ int			check_add_tetra(char **tab, char **tetra, int k, int l)
 	return (0);
 }
 
-void			add_tetra(char **tab, char **tetra, int k, int l)
+void				add_tetra(char **tab, char **tetra, int k, int l)
 {
 	int i;
 	int j;
@@ -131,13 +112,13 @@ void			add_tetra(char **tab, char **tetra, int k, int l)
 	}
 }
 
-int				verif_tetra(char **tab, char **tetra, int i, int j)
+int					verif_tetra(char **tab, char **tetra, int i, int j)
 {
 	int		nbr;
 	char	c;
 
 	nbr = 0;
-	c = ft_letter_tetra(tetra);
+	c = ft_letter(tetra);
 	while (tab[i] != '\0')
 	{
 		while (tab[i][j] != '\0')
