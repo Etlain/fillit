@@ -33,7 +33,7 @@ clean :
 
 fclean:
 	make fclean $(LIBFT)
-	rm -r $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 

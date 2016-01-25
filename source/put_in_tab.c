@@ -6,7 +6,7 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:16:25 by abara             #+#    #+#             */
-/*   Updated: 2016/01/22 12:34:36 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/25 18:05:24 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ char	**get_in_tab(char *fname)
 
 	index = 0;
 	fd = open(fname, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
 	line = get_line(fname);
 	if (line > 130)
 		return (NULL);
