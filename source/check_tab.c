@@ -6,7 +6,7 @@
 /*   By: abara <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 13:18:40 by abara             #+#    #+#             */
-/*   Updated: 2016/01/22 14:29:49 by mmouhssi         ###   ########.fr       */
+/*   Updated: 2016/01/28 12:46:38 by mmouhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		check_line_size(char *str)
 	size = 0;
 	while (str[size] != '\0')
 		++size;
-	if (size < 5)
+	if (size < 5 || size > 5)
 		return (1);
 	return (0);
 }
